@@ -1,47 +1,45 @@
 FORMAT: 1A
-HOST: http://www.google.com
 
-# Notes API
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+HOST: http://snippets.example.com/
 
-# Group Notes
-Notes related resources of the **Notes API**
+# Testing snippet
 
-## Notes Collection [/notes]
-### List all Notes [GET]
+## Basic methods
+
+# /resource
+
+## GET
+
 + Response 200 (application/json)
 
-        [{
-          "id": 1, "title": "Jogging in park"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
+        { "items": [
+          { "url": "/shopping-cart/1", "product":"2ZY48XPZ", "quantity": 1, "name": "New socks", "price": 1.25 }
+        ] }
 
-### Create a Note [POST]
+## HEAD
+
++ Response 204
+
+## POST
+
 + Request (application/json)
 
-        { "title": "Buy cheese and bread for breakfast." }
+        { "product":"1AB23ORM", "quantity": 2 }
 
 + Response 201 (application/json)
 
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+        { "status": "created", "url": "/shopping-cart/2" }
 
-## Note [/notes/{id}]
-A single Note object with all its details
+## PUT
 
-+ Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
++ Request (application/json)
 
-### Retrieve a Note [GET]
+        { "product":"1AB23ORM", "quantity": 2 }
+
 + Response 200 (application/json)
 
-    + Header
+        { "status": "created", "url": "/shopping-cart/2" }
 
-            X-My-Header: The Value
+## DELETE
 
-    + Body
-
-            { "id": 2, "title": "Pick-up posters from post-office" }
-
-### Remove a Note [DELETE]
 + Response 204
