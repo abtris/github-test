@@ -1,6 +1,6 @@
 FORMAT: 1A
 
-HOST: http://snippets.example.com/
+HOST: http://snippets.example.com/v2/
 
 # Testing snippet
 
@@ -43,3 +43,16 @@ HOST: http://snippets.example.com/
 ## DELETE
 
 + Response 204
+
+# /resource2
+
+## POST
+
++ Request (text/plain)
+
+        "1AB23ORM";2
+
++ Response 201 (application/json)
+
+        { "status": "created", "url": "/shopping-cart/2" }
+
